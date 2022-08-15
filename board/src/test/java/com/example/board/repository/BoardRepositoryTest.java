@@ -1,11 +1,12 @@
 package com.example.board.repository;
 
-import java.time.LocalDateTime;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.util.Optional;
 
 import javax.transaction.Transactional;
 
-import org.hibernate.cache.spi.support.AbstractReadWriteAccess.Item;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -37,7 +38,6 @@ public class BoardRepositoryTest {
 	public void read() {
 		
 		// select * from user where id = ?
-//		Optional<Board> board = repository.findBySeq(1L);
 		Optional<Board> board = repository.findBySeq(1L);
 		
 		board.ifPresent(selectBoard ->{
@@ -61,5 +61,22 @@ public class BoardRepositoryTest {
 //			repository.save(selectBoard);
 //		});
 //	}
+	
+	@Test
+	@Transactional
+	public void delete() {
+		Optional<Board> board = repository.findBySeq(1L);
+		
+		assertTrue(board.isPresent());
+		
+		board.ifPresent(selectBoard ->{
+			repository.delete(selectBoard);
+		});
+		
+		Optional<Board> deleteBoard = repository.findById(1L);
+		
+		assertFalse(deleteBoard.isPresent());
+		
+	}
 
 }
