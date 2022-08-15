@@ -6,5 +6,4 @@ import com.example.board.model.entity.Board;
 
 public interface Repository extends CrudRepository<Board, Long> {
 	
-
 }

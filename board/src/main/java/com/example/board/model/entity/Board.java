@@ -21,7 +21,7 @@ public class Board {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long seq;
 
-	private String titile;
+	private String title;
 	
 	private String writer;
 	
