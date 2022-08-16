@@ -1,8 +1,8 @@
 package com.example.board.model.entity;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,13 +22,18 @@ public class Board {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long seq;
 
+	@Column(length = 200, nullable = false)
 	private String title;
 	
+	@Column(length = 20, nullable = false)
 	private String writer;
 	
+	@Column(length = 2000, nullable = false)
 	private String content;
 	
+	@Column(nullable = false, updatable = false, insertable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 	private LocalDateTime regDate;
 	
+	@Column(columnDefinition = "bigint default 0")
 	private Long cnt;
 }
