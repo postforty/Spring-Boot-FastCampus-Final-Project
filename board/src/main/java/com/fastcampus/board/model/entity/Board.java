@@ -8,12 +8,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Data
-@AllArgsConstructor
+@Getter
 @NoArgsConstructor
 @Entity
 public class Board {
@@ -36,4 +35,19 @@ public class Board {
 	
 	@Column(columnDefinition = "bigint default 0")
 	private Long cnt;
+	
+	@Builder
+	public Board(String title, String writer, String content, Long cnt) {
+		this.title = title;
+		this.writer = writer;
+		this.content = content;
+		this.cnt = cnt;
+	}
+	
+	public void update(String title, String content, String writer) {
+        this.title = title;
+        this.content = content;
+        this.writer = writer;
+        this.regDate = LocalDateTime.now();
+    }
 }
