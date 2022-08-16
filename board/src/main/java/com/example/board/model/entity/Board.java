@@ -1,6 +1,7 @@
 package com.example.board.model.entity;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
