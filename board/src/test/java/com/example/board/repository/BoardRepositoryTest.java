@@ -11,7 +11,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.example.board.model.entity.Board;
+import com.fastcampus.board.model.entity.Board;
+import com.fastcampus.board.repository.Repository;
 
 @SpringBootTest
 public class BoardRepositoryTest {
@@ -23,9 +24,9 @@ public class BoardRepositoryTest {
 //	@Transactional
 //	public void create() {
 //		Board board = new Board();
-//		board.setTitle("Á¦¸ñ2");
-//		board.setWriter("ÀÛ¼ºÀÚ2");
-//		board.setContent("³»¿ë2");
+//		board.setTitle("ï¿½ï¿½ï¿½ï¿½2");
+//		board.setWriter("ï¿½Û¼ï¿½ï¿½ï¿½2");
+//		board.setContent("ï¿½ï¿½ï¿½ï¿½2");
 //		board.setRegDate(LocalDateTime.now());
 //		board.setCnt(0L);
 //		
@@ -52,9 +53,9 @@ public class BoardRepositoryTest {
 //		Optional<Board> board = repository.findBySeq(1L);
 //		
 //		board.ifPresent(selectBoard ->{
-//			selectBoard.setTitle("Á¦¸ñ1_¼öÁ¤");
-//			selectBoard.setWriter("ÀÛ¼ºÀÚ1_¼öÁ¤");
-//			selectBoard.setContent("³»¿ë1_¼öÁ¤");
+//			selectBoard.setTitle("ï¿½ï¿½ï¿½ï¿½1_ï¿½ï¿½ï¿½ï¿½");
+//			selectBoard.setWriter("ï¿½Û¼ï¿½ï¿½ï¿½1_ï¿½ï¿½ï¿½ï¿½");
+//			selectBoard.setContent("ï¿½ï¿½ï¿½ï¿½1_ï¿½ï¿½ï¿½ï¿½");
 //			selectBoard.setRegDate(LocalDateTime.now());
 //			selectBoard.setCnt(0L);
 //			

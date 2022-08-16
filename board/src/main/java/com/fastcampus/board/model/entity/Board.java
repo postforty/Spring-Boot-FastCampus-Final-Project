@@ -1,4 +1,4 @@
-package com.example.board.model.entity;
+package com.fastcampus.board.model.entity;
 
 import java.time.LocalDateTime;
 

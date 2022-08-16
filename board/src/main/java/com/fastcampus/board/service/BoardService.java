@@ -1,9 +1,9 @@
-package com.example.board.service;
+package com.fastcampus.board.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.example.board.repository.Repository;
+import com.fastcampus.board.repository.Repository;
 
 import lombok.RequiredArgsConstructor;
 
