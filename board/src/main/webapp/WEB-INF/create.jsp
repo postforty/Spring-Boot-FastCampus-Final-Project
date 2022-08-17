@@ -7,7 +7,7 @@
     <table >
         <tr>
             <td>NickName : </td>
-            <td><form:input path="nickName"  /></td>
+            <td><form:input path="writer"  /></td>
         </tr>
         <tr>
             <td>Title :</td>
