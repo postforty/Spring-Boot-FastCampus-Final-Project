@@ -1,9 +1,10 @@
 package com.fastcampus.board;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.fastcampus.board.dto.PostDto;
 import com.fastcampus.board.model.entity.Board;
-import com.fastcampus.board.model.entity.BoardRepository;
+import com.fastcampus.board.service.BoardService;
 
 @Controller
 public class BoardController {
@@ -20,21 +21,31 @@ public class BoardController {
     // TODO please write code on only TODO part in BoardController
 
 	@Autowired
-	private BoardRepository boardRepository;
+	private BoardService boardService;
 	
     @RequestMapping(value="/save",method = RequestMethod.POST)
     public String createPost(@ModelAttribute("command") PostDto postDto){
         System.out.println("save " + postDto);
         /* TODO: 게시물 추가 로직*/
-        boardRepository.save(postDto);
+//        boardRepository.save(postDto);
         return "redirect:/"; // 추가 후 홈 화면으로
     }
 
+//    @RequestMapping("/")
+//    public String ReadAllPost(Model model){
+//        // List<PostDto> postList = /* TODO 게시물 전체를 받아오는 로직 */
+//
+//    	Iterable<Board> boardList = boardRepository.findAll();
+//    	
+//        model.addAttribute("boardList", boardList);
+//        return "index";
+//    }
+    
     @RequestMapping("/")
-    public String ReadAllPost(Model model){
+    public String ReadAllPost(Model model, Board board){
         // List<PostDto> postList = /* TODO 게시물 전체를 받아오는 로직 */
 
-    	Iterable<Board> boardList = boardRepository.findAll();
+    	List<Board> boardList = boardService.getBoardList(board);
     	
         model.addAttribute("boardList", boardList);
         return "index";
