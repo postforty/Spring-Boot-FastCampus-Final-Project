@@ -1,17 +1,16 @@
 package com.fastcampus.board;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.fastcampus.board.dto.PostDto;
+import com.fastcampus.board.model.entity.Board;
 import com.fastcampus.board.model.entity.BoardRepository;
 
 @Controller
@@ -27,6 +26,7 @@ public class BoardController {
     public String createPost(@ModelAttribute("command") PostDto postDto){
         System.out.println("save " + postDto);
         /* TODO: 게시물 추가 로직*/
+        boardRepository.save(postDto);
         return "redirect:/"; // 추가 후 홈 화면으로
     }
 
@@ -34,16 +34,12 @@ public class BoardController {
     public String ReadAllPost(Model model){
         // List<PostDto> postList = /* TODO 게시물 전체를 받아오는 로직 */
 
-        // ********************************************
-        // 게시물을 받아오는 로직을 작성한 뒤엔 아래 2줄은 삭제 해주셔도 됩니다.
-        List<PostDto> postList = new ArrayList<>();
-//        postList.add(new PostDto(10, "hey", "새 글", "예제"));
-        // *****************************************
-
-        model.addAttribute("postList", postList);
+    	Iterable<Board> boardList = boardRepository.findAll();
+    	
+        model.addAttribute("boardList", boardList);
         return "index";
     }
-
+    
     @RequestMapping(value="/update",method = RequestMethod.POST)
     public String updatePost(@ModelAttribute("command") PostDto postDto){
         System.out.println("update " + postDto);

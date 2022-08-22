@@ -18,18 +18,18 @@ public class BoardTests {
 	@Autowired
 	private BoardRepository boardRepository;
 	
-//	@Test
-//	public void create() {
-//		Board board = new Board();
-//		board.setTitle("제목1");
-//		board.setWriter("작성자1");
-//		board.setContent("내용1");
-//		board.setRegDate(LocalDateTime.now());
-//		board.setCnt(0L);
-//		
-//		Board newBoard = boardRepository.save(board);
-//		System.out.println("newBoard : "+newBoard);
-//	}
+	@Test
+	@Transactional
+	public void create() {
+		Board board = new Board();
+		board.setTitle("제목1");
+		board.setWriter("작성자1");
+		board.setContent("내용1");
+		board.setRegDate(LocalDateTime.now());
+		board.setCnt(0L);
+		Board newBoard = boardRepository.save(board);
+		System.out.println("newBoard : "+newBoard);
+	}
 	
 //	@Test
 //	@Transactional
