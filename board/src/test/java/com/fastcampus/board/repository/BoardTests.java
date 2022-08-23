@@ -1,35 +1,65 @@
 package com.fastcampus.board.repository;
 
-import java.time.LocalDateTime;
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.util.List;
 
-import javax.transaction.Transactional;
-
+import org.junit.After;
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import com.fastcampus.board.model.entity.Board;
 import com.fastcampus.board.model.entity.BoardRepository;
 
+@RunWith(SpringRunner.class)
 @SpringBootTest
 public class BoardTests {
 	
 	@Autowired
-	private BoardRepository boardRepository;
+	BoardRepository boardRepository;
+	
+	@After
+	public void cleanup() {
+		boardRepository.deleteAll();
+	}
 	
 	@Test
-	@Transactional
-	public void create() {
-		Board board = new Board();
-		board.setTitle("제목1");
-		board.setWriter("작성자1");
-		board.setContent("내용1");
-		board.setRegDate(LocalDateTime.now());
-		board.setCnt(0L);
-		Board newBoard = boardRepository.save(board);
-		System.out.println("newBoard : "+newBoard);
+	public void 게시글저장_불러오기() {
+		// given
+		String title = "테스트 게시글";
+		String content = "테스트 본문";
+		
+//		boardRepository.save(Board.builder()
+//				.title(title)
+//				.content(content)
+//				.writer("테스트 작성자")
+//				.build());
+		
+		// when
+		List<Board> boardList = boardRepository.findAll();
+		
+		// then
+		Board board = boardList.get(1);
+		assertThat(board.getTitle()).isEqualTo(title);
+		assertThat(board.getContent()).isEqualTo(content);
+		
 	}
+	
+//	@Test
+//	@Transactional
+//	public void create() {
+//		Board board = new Board();
+//		board.setTitle("제목1");
+//		board.setWriter("작성자1");
+//		board.setContent("내용1");
+//		board.setRegDate(LocalDateTime.now());
+//		board.setCnt(0L);
+//		Board newBoard = boardRepository.save(board);
+//		System.out.println("newBoard : "+newBoard);
+//	}
 	
 //	@Test
 //	@Transactional
