@@ -7,15 +7,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
-import lombok.Builder;
-import lombok.Getter;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Getter
+@Data
+@AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "board")
 public class Board {
 
 	@Id
@@ -37,17 +39,4 @@ public class Board {
 	@Column(columnDefinition = "bigint default 0")
 	private Long cnt;
 	
-	@Builder
-	public Board(String title, String writer, String content) {
-		this.title = title;
-		this.writer = writer;
-		this.content = content;
-	}
-//	
-//	public void update(String title, String content, String writer) {
-//        this.title = title;
-//        this.content = content;
-//        this.writer = writer;
-//        this.regDate = LocalDateTime.now();
-//    }
 }
