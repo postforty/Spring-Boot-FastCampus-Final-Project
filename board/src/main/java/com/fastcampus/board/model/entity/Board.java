@@ -33,7 +33,7 @@ public class Board {
 	@Column(length = 2000, nullable = false)
 	private String content;
 	
-	@Column(nullable = false, updatable = false, insertable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+	@Column(nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 	private LocalDateTime regDate;
 	
 	@Column(columnDefinition = "bigint default 0")

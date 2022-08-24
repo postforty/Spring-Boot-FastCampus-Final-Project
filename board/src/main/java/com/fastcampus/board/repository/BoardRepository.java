@@ -9,5 +9,4 @@ import com.fastcampus.board.model.entity.Board;
 
 @Repository
 public interface BoardRepository extends CrudRepository<Board, Long> {
-	Optional<Board> findBySeq(Long seq);
 }
