@@ -1,10 +1,8 @@
 package com.fastcampus.board.repository;
 
-import java.util.Optional;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 
 import com.fastcampus.board.BoardApplicationTests;
 import com.fastcampus.board.model.entity.Board;
@@ -41,6 +39,13 @@ public class BoardRepositoryTest extends BoardApplicationTests {
 //		return board.get();
 //	}
 	
+	@Test
+	public void read() {
+		Iterable<Board> board = boardRepository.findAll();
+		
+		System.out.println("board : "+board);
+	}
+	
 //	@Test
 //	public void update() {
 //		Optional<Board> board = boardRepository.findById(12L);
@@ -61,22 +66,22 @@ public class BoardRepositoryTest extends BoardApplicationTests {
 //		
 //	}
 	
-	@Test
-	@Transactional // 데이터 롤백
-	public void delete() {
-		Optional<Board> board = boardRepository.findById(11L);
-		
-		board.ifPresent(selectBoard -> {
-			boardRepository.delete(selectBoard);
-		});
-		
-		// 삭제가 되었는지 확인
-		Optional<Board> deleteBoard = boardRepository.findById(12L);
-		
-		if(deleteBoard.isPresent()) {
-			System.out.println("데이터 존재 : "+deleteBoard.get());
-		} else {
-			System.out.println("데이터 없음");
-		}
-	}
+//	@Test
+//	@Transactional // 데이터 롤백
+//	public void delete() {
+//		Optional<Board> board = boardRepository.findById(11L);
+//		
+//		board.ifPresent(selectBoard -> {
+//			boardRepository.delete(selectBoard);
+//		});
+//		
+//		// 삭제가 되었는지 확인
+//		Optional<Board> deleteBoard = boardRepository.findById(12L);
+//		
+//		if(deleteBoard.isPresent()) {
+//			System.out.println("데이터 존재 : "+deleteBoard.get());
+//		} else {
+//			System.out.println("데이터 없음");
+//		}
+//	}
 }
