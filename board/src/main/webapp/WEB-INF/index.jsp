@@ -37,12 +37,12 @@
 
             <c:forEach items="${postList}" var="post">
                 <tr>
-                    <td>${post.getPostId()}</td>
-                    <td>${post.getNickName()}</td>
+                    <td>${post.getSeq()}</td>
+                    <td>${post.getWriter()}</td>
                     <td>${post.getTitle()}</td>
                     <td>${post.getContent()}</td>
-                    <td><a href="updateView/${post.getPostId()}">수정</a></td>
-                    <td><a href="delete/${post.getPostId()}">삭제</a></td>
+                    <td><a href="updateView/${post.getSeq()}">수정</a></td>
+                    <td><a href="delete/${post.getSeq()}">삭제</a></td>
                 </tr>
             </c:forEach>
         </table>

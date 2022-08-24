@@ -1,5 +1,7 @@
 package com.fastcampus.board;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.fastcampus.board.dto.BoardDto;
+import com.fastcampus.board.model.entity.Board;
 import com.fastcampus.board.service.BoardService;
 
 @Controller
@@ -36,8 +39,8 @@ public class BoardController {
 
         // ********************************************
         // 게시물을 받아오는 로직을 작성한 뒤엔 아래 2줄은 삭제 해주셔도 됩니다.
-//        List<PostDto> postList = new ArrayList<>();
-//        postList.add(new PostDto(10, "hey", "새 글", "예제"));
+        List<BoardDto> postList = boardService.getBoardList();
+        model.addAttribute("postList", postList);
         // *****************************************
 
 //        model.addAttribute("postList", postList);
