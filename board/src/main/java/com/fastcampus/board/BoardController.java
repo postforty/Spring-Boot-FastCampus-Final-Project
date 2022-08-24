@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.fastcampus.board.dto.BoardDto;
-import com.fastcampus.board.model.entity.Board;
 import com.fastcampus.board.service.BoardService;
 
 @Controller
@@ -51,6 +50,7 @@ public class BoardController {
     public String updatePost(@ModelAttribute("command") BoardDto postDto){
         System.out.println("update " + postDto);
         /* TODO 게시물 수정 로직 */
+        boardService.savePost(postDto);
         return "redirect:/";
     }
 
