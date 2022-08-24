@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -38,5 +39,14 @@ public class Board {
 	
 	@Column(columnDefinition = "bigint default 0")
 	private Long cnt;
+	
+	@Builder
+    public Board(Long seq, String writer, String title, String content, LocalDateTime regDate) {
+        this.seq = seq;
+        this.writer = writer;
+        this.title = title;
+        this.content = content;
+        this.regDate = LocalDateTime.now();
+    }
 	
 }

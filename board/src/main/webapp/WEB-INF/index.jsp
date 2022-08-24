@@ -35,19 +35,20 @@
                 <th>Delete</th>
             </tr>
 
-            <c:forEach items="${boardList}" var="board">
+            <c:forEach items="${postList}" var="post">
                 <tr>
-                    <td>${board.seq}</td>
-                    <td>${board.writer}</td>
-                    <td>${board.title}</td>
-                    <td>${board.content}</td>
-                    <td><a href="updateView/${board.seq}">수정</a></td>
-                    <td><a href="delete/${board.seq}">삭제</a></td>
+                    <td>${post.getPostId()}</td>
+                    <td>${post.getNickName()}</td>
+                    <td>${post.getTitle()}</td>
+                    <td>${post.getContent()}</td>
+                    <td><a href="updateView/${post.getPostId()}">수정</a></td>
+                    <td><a href="delete/${post.getPostId()}">삭제</a></td>
                 </tr>
             </c:forEach>
         </table>
         <br/>
         <a href="createView">새 글 작성</a>
     </div>
+
 </body>
 </html>
