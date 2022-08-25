@@ -55,9 +55,10 @@ public class BoardController {
     }
 
     @RequestMapping(value="/delete/{id}",method = RequestMethod.GET)
-    public String deletePost(@PathVariable int id){
+    public String deletePost(@PathVariable Long id){
         System.out.println("삭제 " + id);
         /* TODO 게시물 삭제 로직 */
+        boardService.deletePost(id);
         return "redirect:/";
     }
 

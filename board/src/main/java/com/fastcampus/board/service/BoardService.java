@@ -18,11 +18,13 @@ public class BoardService {
         this.boardRepository = boardRepository;
     }
 
+    // 게시물 생성/수정
     @Transactional
     public Long savePost(BoardDto boardDto) {
         return boardRepository.save(boardDto.toEntity()).getSeq();
     }
     
+    // 게시물 전체 가져오기
     @Transactional
     public List<BoardDto> getBoardList() {
         Iterable<Board> boardList = boardRepository.findAll();
@@ -40,6 +42,11 @@ public class BoardService {
             boardDtoList.add(boardDto);
         }
         return boardDtoList;
+    }
+    
+    @Transactional
+    public void deletePost(Long id) {
+        boardRepository.deleteById(id);
     }
 
 }
