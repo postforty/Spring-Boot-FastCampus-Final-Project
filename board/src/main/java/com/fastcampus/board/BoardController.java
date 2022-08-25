@@ -50,7 +50,7 @@ public class BoardController {
     public String updatePost(@ModelAttribute("command") BoardDto postDto){
         System.out.println("update " + postDto);
         /* TODO 게시물 수정 로직 */
-        boardService.savePost(postDto);
+        boardService.updatePost(postDto);
         return "redirect:/";
     }
 

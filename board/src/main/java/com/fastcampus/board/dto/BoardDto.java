@@ -24,13 +24,14 @@ public class BoardDto {
     private LocalDateTime regDate;
     private Long cnt;
     
-    public Board toEntity() {
+    public Board toEntity(Long cnt) {
         Board build = Board.builder()
                 .seq(seq)
                 .writer(writer)
                 .title(title)
                 .content(content)
                 .regDate(regDate)
+                .cnt(cnt)
                 .build();
         return build;
     }
@@ -43,5 +44,7 @@ public class BoardDto {
         this.content = content;
         this.regDate = regDate;
         this.cnt = cnt;
+        
+        System.out.println("BoardDto :"+seq+' '+writer+' '+title+' '+content+' '+regDate+' '+cnt);
     }
 }

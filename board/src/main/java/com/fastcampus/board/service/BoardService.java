@@ -18,10 +18,18 @@ public class BoardService {
         this.boardRepository = boardRepository;
     }
 
-    // 게시물 생성/수정
+    // 게시물 생성
     @Transactional
     public Long savePost(BoardDto boardDto) {
-        return boardRepository.save(boardDto.toEntity()).getSeq();
+        return boardRepository.save(boardDto.toEntity(0L)).getSeq();
+    }
+    
+    // 게시물 수정
+    @Transactional
+    public Long updatePost(BoardDto boardDto) {
+    	Board board = boardRepository.findById(boardDto.getSeq()).get();
+    	System.out.println("board : "+board);
+    	return boardRepository.save(boardDto.toEntity(board.getCnt())).getSeq();
     }
     
     // 게시물 전체 가져오기
@@ -50,7 +58,7 @@ public class BoardService {
         boardRepository.deleteById(id);
     }
     
-    // 게시물 조회
+    // 게시물 상세 조회
     @Transactional
     public BoardDto getPost(Long id) {
         Board board = boardRepository.findById(id).get();

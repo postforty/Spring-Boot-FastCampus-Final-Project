@@ -15,7 +15,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "board")
@@ -41,12 +40,13 @@ public class Board {
 	private Long cnt;
 	
 	@Builder
-    public Board(Long seq, String writer, String title, String content, LocalDateTime regDate) {
+    public Board(Long seq, String writer, String title, String content, LocalDateTime regDate, Long cnt) {
         this.seq = seq;
         this.writer = writer;
         this.title = title;
         this.content = content;
         this.regDate = LocalDateTime.now();
+        this.cnt = cnt;
     }
 	
 }
