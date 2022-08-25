@@ -73,9 +73,15 @@ public class BoardController {
     }
 
     @RequestMapping(value="/updateView/{id}")
-    public String ViewUpdate(@PathVariable int id, Model model){
+    public String ViewUpdate(@PathVariable Long id, Model model){
+    	
+    	BoardDto boardDto = boardService.getPost(id); // 게시물 수정전 기존 값 불러오기
+    	
         BoardDto postDto = new BoardDto();
         postDto.setSeq(id);
+        postDto.setWriter(boardDto.getWriter());
+        postDto.setContent(boardDto.getContent());
+        postDto.setTitle(boardDto.getTitle());
         model.addAttribute("command",postDto);
         return "update";
     }

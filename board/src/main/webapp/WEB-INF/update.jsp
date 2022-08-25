@@ -13,15 +13,15 @@
         </tr>
         <tr>
             <td>NickName : </td>
-            <td><form:input path="writer"  /></td>
+            <td><form:input path="writer" value="${command.getWriter()}"/></td>
         </tr>
         <tr>
             <td>Title :</td>
-            <td><form:input path="title" /></td>
+            <td><form:input path="title" value="${command.getTitle()}"/></td>
         </tr>
         <tr>
             <td>Content :</td>
-            <td><form:input path="content" /></td>
+            <td><form:input path="content" value="${command.getContent()}"/></td>
         </tr>
         <tr>
             <td> </td>

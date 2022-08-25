@@ -44,9 +44,27 @@ public class BoardService {
         return boardDtoList;
     }
     
+    // 게시물 삭제
     @Transactional
     public void deletePost(Long id) {
         boardRepository.deleteById(id);
+    }
+    
+    // 게시물 상세 보기(게시물 수정전 기존 값)
+    @Transactional
+    public BoardDto getPost(Long id) {
+        Board board = boardRepository.findById(id).get();
+        
+        board.setCnt(board.getCnt()+1); // 조회수 +1
+        
+        BoardDto boardDto = BoardDto.builder()
+                .seq(board.getSeq())
+                .writer(board.getWriter())
+                .title(board.getTitle())
+                .content(board.getContent())
+                .regDate(board.getRegDate())
+                .build();
+        return boardDto;
     }
 
 }
