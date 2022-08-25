@@ -50,12 +50,17 @@ public class BoardService {
         boardRepository.deleteById(id);
     }
     
-    // 게시물 상세 보기(게시물 수정전 기존 값)
+    // 게시물 조회
     @Transactional
     public BoardDto getPost(Long id) {
         Board board = boardRepository.findById(id).get();
         
-        board.setCnt(board.getCnt()+1); // 조회수 +1
+        // 조회수 +1
+        if(board.getCnt() == null) {
+        	board.setCnt(1L);
+        } else {
+        	board.setCnt(board.getCnt()+1);
+        }
         
         BoardDto boardDto = BoardDto.builder()
                 .seq(board.getSeq())
