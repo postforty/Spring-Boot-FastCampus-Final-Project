@@ -44,7 +44,5 @@ public class BoardDto {
         this.content = content;
         this.regDate = regDate;
         this.cnt = cnt;
-        
-        System.out.println("BoardDto :"+seq+' '+writer+' '+title+' '+content+' '+regDate+' '+cnt);
     }
 }
