@@ -2,6 +2,8 @@ package com.fastcampus.board;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -25,10 +27,10 @@ public class BoardController {
     }
 
     @RequestMapping(value="/save",method = RequestMethod.POST)
-    public String createPost(@ModelAttribute("command") BoardDto postDto){
+    public String createPost(@Valid @ModelAttribute("command") BoardDto postDto){
         System.out.println("save " + postDto);
         /* TODO: 게시물 추가 로직*/
-        boardService.savePost(postDto);
+    	boardService.savePost(postDto);
         return "redirect:/"; // 추가 후 홈 화면으로
     }
 
@@ -47,7 +49,7 @@ public class BoardController {
     }
 
     @RequestMapping(value="/update",method = RequestMethod.POST)
-    public String updatePost(@ModelAttribute("command") BoardDto postDto){
+    public String updatePost(@Valid @ModelAttribute("command") BoardDto postDto){
         System.out.println("update " + postDto);
         /* TODO 게시물 수정 로직 */
         boardService.updatePost(postDto);

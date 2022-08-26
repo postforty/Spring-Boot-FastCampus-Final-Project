@@ -2,7 +2,6 @@ package com.fastcampus.board.repository;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 
 import com.fastcampus.board.BoardApplicationTests;
 import com.fastcampus.board.model.entity.Board;

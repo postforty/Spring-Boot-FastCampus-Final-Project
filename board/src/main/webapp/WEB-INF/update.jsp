@@ -25,7 +25,8 @@
         </tr>
         <tr>
             <td> </td>
-            <td><input type="submit" value="Edit Save" /></td>
+            <td><input type="submit" value="Edit Save" /> <button type="button" onClick="location.href='/'">Cancel</button></td>
+            <td></td>
         </tr>
     </table>
 </form:form>

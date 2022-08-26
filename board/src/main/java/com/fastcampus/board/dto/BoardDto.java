@@ -2,6 +2,8 @@ package com.fastcampus.board.dto;
 
 import java.time.LocalDateTime;
 
+import javax.validation.constraints.NotEmpty;
+
 import com.fastcampus.board.model.entity.Board;
 
 import lombok.AllArgsConstructor;
@@ -18,8 +20,11 @@ import lombok.ToString;
 @NoArgsConstructor
 public class BoardDto {
     private long seq;
+    @NotEmpty
     private String title;
+    @NotEmpty
     private String writer;
+    @NotEmpty
     private String content;
     private LocalDateTime regDate;
     private Long cnt;
