@@ -31,5 +31,5 @@
 + SEQ는 자동으로 1씩 증가해야 함.
 
 ***
-사용한 기술
+### 사용한 기술
 + Spring Boot, Java 11, Gradle, JSP, JPA, MySQL
