@@ -28,7 +28,6 @@ public class BoardService {
     @Transactional
     public Long updatePost(BoardDto boardDto) {
     	Board board = boardRepository.findById(boardDto.getSeq()).get();
-    	System.out.println("board : "+board);
     	return boardRepository.save(boardDto.toEntity(board.getCnt())).getSeq();
     }
     
